@@ -6,7 +6,7 @@ using namespace std;
 
 bool casoDePrueba() {
 	string cifrado;
-	getline(cin,cifrado);
+	getline(cin, cifrado);
 
 	if (!cin)
 		return false;
@@ -28,26 +28,22 @@ bool casoDePrueba() {
 	//Ahora está X' en pila1
 	stack<char> aux;
 	while (!pila1.empty()) {
+		//SI VOCAL, AÑADIMOS DIRECTAMENTE
 		if (tolower(pila1.front()) == 'a' || tolower(pila1.front()) == 'e' || tolower(pila1.front()) == 'o' || tolower(pila1.front()) == 'i' || tolower(pila1.front()) == 'u') {
 			cout << pila1.front();
 			pila1.pop_front();
 		}
+		//SI NO, INVERTIMOS
 		else {
-			
-			while (!(tolower(pila1.front()) == 'a' || tolower(pila1.front()) == 'e' || tolower(pila1.front()) == 'o' || tolower(pila1.front()) == 'i' || tolower(pila1.front()) == 'u')) {
-				aux.push(pila1.front()); 
+			while (!pila1.empty() && !(tolower(pila1.front()) == 'a' || tolower(pila1.front()) == 'e' || tolower(pila1.front()) == 'o' || tolower(pila1.front()) == 'i' || tolower(pila1.front()) == 'u')) {
+				aux.push(pila1.front());
 				pila1.pop_front();
 			}
 			while (!aux.empty()) {
-				cout << aux.top(); 
+				cout << aux.top();
 				aux.pop();
 			}
 		}
-	}
-
-	while (!aux.empty()) {
-		cout << aux.top();
-		aux.pop();
 	}
 
 	cout << "\n";
